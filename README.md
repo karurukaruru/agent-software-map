@@ -14,6 +14,7 @@ An ASM (Agent Software Map) is a structured Markdown file that provides an agent
 
 
 Install this repository as an Agent Skill:
+```bash
 [Target Software]
         |
         v
@@ -29,6 +30,8 @@ Install this repository as an Agent Skill:
                                                                                                   Execution Feedback
                                                                                                            |
                                                                                                            +----> Update ASM
+```
+Quickly to star
 ```bash
 # Claude Code
 git clone https://github.com/karurukaruru/agent-software-map.git ~/.claude/skills/agent-software-map
