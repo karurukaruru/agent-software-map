@@ -1,6 +1,6 @@
 # Agent Software Map
 
-> 让 AI 代理在操作陌生软件前先拿到一张地图。
+> 让 Agent在操作陌生软件前先拿到一张地图。
 
 [![Agent Skills](https://img.shields.io/badge/Agent%20Skills-compatible-6f42c1)](https://agentskills.io/specification)
 [![Validate](https://github.com/karurukaruru/agent-software-map/actions/workflows/validate.yml/badge.svg)](https://github.com/karurukaruru/agent-software-map/actions/workflows/validate.yml)
@@ -9,9 +9,9 @@
 
 [English](README.md)
 
-## 要解决的问题
+## 什么是Agent software map
 
-代理即使会点击、输入和调用工具，也不一定理解眼前的软件。结果往往是盲目探索、重复操作、错误判断状态，甚至做出不安全的猜测。
+Agent即使会点击、输入和调用工具，也不一定理解眼前的软件。结果往往是盲目探索、重复操作、错误判断状态，甚至做出不安全的猜测。
 
 **ASM（Agent Software Map，代理软件地图）**是一份结构化 Markdown 文件，在代理行动前提供特定软件的操作知识。
 
@@ -40,20 +40,20 @@ git clone https://github.com/karurukaruru/agent-software-map.git ~/.codex/skills
 使用 $agent-software-map 为 OBS Studio 创建一份 ASM。
 ```
 
-Agent Skills 规范要求的识别入口是 [`SKILL.md`](SKILL.md)，不能改成 `ASM.md`。生成出来的软件地图则采用 `ASM-OBS-Studio.md` 这样的名称。
+生成出的软件地图则采用 `ASM-OBS-Studio.md` 这样的名称。
 
 ## ASM 包含什么
 
-每份地图包含四部分：
+每份ASM包含四部分：
 
 1. **身份**——软件、版本、平台、范围和置信度。
-2. **来源**——证据，用户提供的资料排在最前。
+2. **信息来源**——证据，用户提供的资料排在最前。
 3. **能力树**——从稳定对象和工作流展开到可执行叶节点。
-4. **功能卡片**——作用、入口、步骤、成功检查和操作补丁。
+4. **功能**——作用、入口、步骤、成功检查和操作补丁。
 
 操作补丁记录最可能影响代理成败的细节：状态假设、版本差异、破坏性影响、命名规则、隐藏依赖、常见错误和恢复方法。
 
-可以从[英文模板](asm-template.md)或[中文模板](asm-template.zh-CN.md)开始，也可以在操作软件前直接把已有的 `ASM-<软件>.md` 提供给代理。
+可以从[英文模板](asm-template.md)或[中文模板](asm-template.zh-CN.md)开始，也可以在操作软件前直接把已有的 `ASM-<软件>.md` 提供给Agent。
 
 ## OBS 示例与案例测试
 
@@ -62,7 +62,8 @@ Agent Skills 规范要求的识别入口是 [`SKILL.md`](SKILL.md)，不能改�
 
 OBS 地图目前是面向 OBS Studio 32.2.1、基于官方文档整理的候选版，尚未在目标电脑完成真实操作验证。
 
-今天两次对照尝试都没有完成：一次因服务商额度耗尽中断，另一次因 API 报错中断。作者在中断时人工统计，一次为 41 分，另一次约为 40–50 分；两者都不是最终分数，必须从结果中排除，也不能用于宣称效果提升。
+2026.8.6
+两次对照尝试都没有完成：一次因服务商额度耗尽中断，另一次因 API 报错中断。作者在中断时人工统计，一次为 41 分，另一次约为 40–50 分；两者都不是最终分数，必须从结果中排除，也不能用于宣称效果提升。
 
 ## 评测规则
 
