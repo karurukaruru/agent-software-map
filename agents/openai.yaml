@@ -1,0 +1,4 @@
+interface:
+  display_name: "Agent Software Map"
+  short_description: "Create safe, evidence-aware maps for unfamiliar software"
+  default_prompt: "Use $agent-software-map to create an evidence-aware operational map for this software."

@@ -1,0 +1,23 @@
+name: Feature request
+description: Propose an improvement or a new software map
+title: "[Feature]: "
+labels:
+  - enhancement
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or use case
+      description: What agent failure or missing workflow would this address?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed change
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Relevant sources or examples

@@ -1,0 +1,47 @@
+name: Bug report
+description: Report an error in the Skill, template, example, or validation tooling
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: Thanks for helping improve Agent Software Map. Do not include credentials or private data.
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Generator Skill
+        - ASM format or template
+        - OBS example
+        - Evaluation protocol
+        - Validation tooling
+        - Documentation
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Software and version
+      placeholder: "Example: OBS Studio 32.2.1 on Windows 11"
+  - type: textarea
+    id: problem
+    attributes:
+      label: What is wrong?
+      description: Include the exact file, section, or function card.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: Link official documentation or describe a direct test without exposing private information.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected correction
+    validations:
+      required: true
