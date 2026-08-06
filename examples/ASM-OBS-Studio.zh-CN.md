@@ -19,14 +19,14 @@
 ## 1. 来源
 
 - **用户提供 · 官方仓库：** [obsproject/obs-studio](https://github.com/obsproject/obs-studio)
-- **代理查找 · 官方：** [快速入门](https://obsproject.com/kb/quick-start-guide)
-- **代理查找 · 官方：** [OBS 界面概览](https://obsproject.com/kb/obs-studio-overview)
-- **代理查找 · 官方：** [来源指南](https://obsproject.com/kb/sources-guide)
-- **代理查找 · 官方：** [音频混音器](https://obsproject.com/kb/audio-mixer-guide)
-- **代理查找 · 官方：** [场景集合](https://obsproject.com/kb/scene-collections)
-- **代理查找 · 官方：** [音视频格式](https://obsproject.com/kb/audio-video-formats-guide)
-- **代理查找 · 官方：** [远程控制](https://obsproject.com/kb/remote-control-guide)
-- **代理查找 · 官方：** [OBS Studio 32.2.1 发行说明](https://github.com/obsproject/obs-studio/releases/tag/32.2.1)
+- **Agent查找 · 官方：** [快速入门](https://obsproject.com/kb/quick-start-guide)
+- **Agent查找 · 官方：** [OBS 界面概览](https://obsproject.com/kb/obs-studio-overview)
+- **Agent查找 · 官方：** [来源指南](https://obsproject.com/kb/sources-guide)
+- **Agent查找 · 官方：** [音频混音器](https://obsproject.com/kb/audio-mixer-guide)
+- **Agent查找 · 官方：** [场景集合](https://obsproject.com/kb/scene-collections)
+- **Agent查找 · 官方：** [音视频格式](https://obsproject.com/kb/audio-video-formats-guide)
+- **Agent查找 · 官方：** [远程控制](https://obsproject.com/kb/remote-control-guide)
+- **Agent查找 · 官方：** [OBS Studio 32.2.1 发行说明](https://github.com/obsproject/obs-studio/releases/tag/32.2.1)
 
 ## 2. 能力树
 
