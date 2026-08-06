@@ -5,7 +5,7 @@
 [![Agent Skills](https://img.shields.io/badge/Agent%20Skills-compatible-6f42c1)](https://agentskills.io/specification)
 [![Validate](https://github.com/karurukaruru/agent-software-map/actions/workflows/validate.yml/badge.svg)](https://github.com/karurukaruru/agent-software-map/actions/workflows/validate.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Status](https://img.shields.io/badge/status-v0.1.0%20candidate-orange)](#项目状态)
+[![Status](https://img.shields.io/badge/status-v0.0.0%20experimental-orange)](#项目状态)
 
 [English](README.md)
 
@@ -94,7 +94,7 @@ OBS 地图目前是面向 OBS Studio 32.2.1、基于官方文档整理的候选�
 
 ## 项目状态
 
-`v0.1.0` 候选版已经包含格式、生成 Skill、中英文模板、一个基于文档的 OBS 示例和受控测试协议。公开 Release 标签和有效完成的 OBS 对照结果仍待补充。
+`v0.0.0` 是实验性预览版，已经包含格式、生成 Skill、中英文模板、一个基于文档的 OBS 示例和受控测试协议。格式仍可能变化，有效完成的 OBS 对照结果也仍待补充。
 
 ## 贡献与安全
 

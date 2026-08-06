@@ -9,7 +9,7 @@ This project follows [Semantic Versioning](https://semver.org/). Dates use `YYYY
 - Live validation of the OBS Studio map
 - A completed controlled baseline/ASM-assisted case study
 
-## [0.1.0] - Pending
+## [0.0.0] - 2026-08-06
 
 ### Added
 
@@ -23,4 +23,4 @@ This project follows [Semantic Versioning](https://semver.org/). Dates use `YYYY
 
 - Renamed the project and format to Agent Software Map (ASM)
 
-> `0.1.0` is a candidate and has not been tagged. Replace `Pending` with the release date when it is published.
+> This is an experimental preview. The format and files may change before `v0.1.0`.

@@ -5,7 +5,7 @@
 [![Agent Skills](https://img.shields.io/badge/Agent%20Skills-compatible-6f42c1)](https://agentskills.io/specification)
 [![Validate](https://github.com/karurukaruru/agent-software-map/actions/workflows/validate.yml/badge.svg)](https://github.com/karurukaruru/agent-software-map/actions/workflows/validate.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Status](https://img.shields.io/badge/status-v0.1.0%20candidate-orange)](#project-status)
+[![Status](https://img.shields.io/badge/status-v0.0.0%20experimental-orange)](#project-status)
 
 [中文说明](README.zh-CN.md)
 
@@ -94,7 +94,7 @@ Two attempted comparison runs were interrupted before completion: one by provide
 
 ## Project status
 
-`v0.1.0` candidate includes the format, generator skill, bilingual templates, one documentation-based OBS example, and a controlled evaluation protocol. A public release tag and valid completed OBS comparison are still pending.
+`v0.0.0` is an experimental preview. It includes the format, generator skill, bilingual templates, one documentation-based OBS example, and a controlled evaluation protocol. The format may change, and a valid completed OBS comparison is still pending.
 
 ## Contributing and security
 
