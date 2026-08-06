@@ -13,7 +13,7 @@
 
 Agent即使会点击、输入和调用工具，也不一定理解眼前的软件。结果往往是盲目探索、重复操作、错误判断状态，甚至做出不安全的猜测。
 
-**ASM（Agent Software Map，代理软件地图）**是一份结构化 Markdown 文件，在代理行动前提供特定软件的操作知识。
+**ASM（Agent Software Map）**是一份结构化 Markdown 文件，在Agent操作前提供特定软件的操作知识。
 
 | 没有 ASM | 有 ASM |
 |---|---|
