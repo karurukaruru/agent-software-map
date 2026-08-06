@@ -12,7 +12,7 @@
 ## 什么是Agent software map
 
 **ASM（Agent Software Map）**是一份结构化 Markdown 文件，在Agent操作前提供特定软件的操作知识。
-
+```bash
   [目标软件]   
         |
         v
