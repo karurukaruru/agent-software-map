@@ -1,248 +1,130 @@
 # ASM: OBS Studio
 
-> OBS Studio is free, open-source software for real-time video/audio capture, composition, recording, and live streaming.
+> OBS Studio is free, open-source software for real-time video and audio capture, composition, recording, and live streaming.
 
 ## 0. Identity
 
-| Field | Value |
+| Field | Details |
 |---|---|
 | Name | OBS Studio |
-| Version | 32.2.1 documentation candidate; verify the installed version |
-| Category | Recording, live streaming, real-time audiovisual composition |
+| Version | 32.2.1 documentation candidate; verify the installed version before use |
+| Category | Recording, live streaming, and real-time audiovisual composition |
 | Platforms | Windows, macOS, Linux |
 | License | GPL-2.0-or-later |
 
-> **Scope:** Core desktop workflow: profiles, scene collections, scenes, sources, preview, audio mixer, video/output settings, Studio Mode, local recording, diagnostics, and WebSocket safety. Plugin development and exhaustive encoder tuning are excluded.
+> **Scope:** Profiles, Scene Collections, scenes, sources, Preview, the Audio Mixer, video and output settings, Studio Mode, local recording, diagnostics, and WebSocket security. Plugin development and exhaustive encoder tuning are not covered.
 >
-> **Confidence:** Documentation-based and not yet tested on the target machine. Interface labels and available capture/encoder choices vary by platform, language, hardware, and version. OBS 32.2 replaced the add-source dropdown with a new dialog, so earlier screenshots may differ.
+> **Confidence:** Based on official documentation and not yet tested on the target computer. Interface labels and available capture methods and encoders vary by platform, language, hardware, and version. OBS 32.2 replaced the Add Source drop-down menu with a new dialog, so older screenshots may look different.
 
 ## 1. Sources
 
 - **User-provided · Official repository:** [obsproject/obs-studio](https://github.com/obsproject/obs-studio)
-- **Agent-retrieved · Official:** [Quick Start Guide](https://obsproject.com/kb/quick-start-guide)
-- **Agent-retrieved · Official:** [OBS Studio Overview](https://obsproject.com/kb/obs-studio-overview)
-- **Agent-retrieved · Official:** [Sources Guide](https://obsproject.com/kb/sources-guide)
-- **Agent-retrieved · Official:** [Audio Mixer Guide](https://obsproject.com/kb/audio-mixer-guide)
-- **Agent-retrieved · Official:** [Scene Collections](https://obsproject.com/kb/scene-collections)
-- **Agent-retrieved · Official:** [Audio/Video Formats Guide](https://obsproject.com/kb/audio-video-formats-guide)
-- **Agent-retrieved · Official:** [Remote Control Guide](https://obsproject.com/kb/remote-control-guide)
-- **Agent-retrieved · Official:** [OBS Studio 32.2.1 release](https://github.com/obsproject/obs-studio/releases/tag/32.2.1)
+- **Agent search · Official:** [Quick Start Guide](https://obsproject.com/kb/quick-start-guide)
+- **Agent search · Official:** [OBS Studio Overview](https://obsproject.com/kb/obs-studio-overview)
+- **Agent search · Official:** [Sources Guide](https://obsproject.com/kb/sources-guide)
+- **Agent search · Official:** [Audio Mixer Guide](https://obsproject.com/kb/audio-mixer-guide)
+- **Agent search · Official:** [Scene Collections](https://obsproject.com/kb/scene-collections)
+- **Agent search · Official:** [Audio/Video Formats Guide](https://obsproject.com/kb/audio-video-formats-guide)
+- **Agent search · Official:** [Remote Control Guide](https://obsproject.com/kb/remote-control-guide)
+- **Agent search · Official:** [OBS Studio 32.2.1 Release Notes](https://github.com/obsproject/obs-studio/releases/tag/32.2.1)
 
-## 2. Capability tree
+## 2. Capability Tree
 
 ```text
 OBS Studio
-├── Workspace isolation
-│   ├── Profile
-│   └── Scene Collection
-├── Composition
-│   ├── Scene
-│   ├── Source
-│   ├── Window Capture
-│   └── Transform and lock
-├── Audio
-│   ├── Mixer inspection
-│   └── Mute and filters
-├── Output
-│   ├── Canvas and output resolution
-│   ├── Recording format and path
-│   └── Start and stop recording
-├── Production
-│   └── Studio Mode transition
-└── Safety and diagnostics
-    ├── Output-state preflight
-    ├── Log inspection
-    └── WebSocket access
+├── Workspace isolation: Profile / Scene Collection
+├── Visual composition: scenes / sources / Window Capture / transform and lock
+├── Audio: mixer inspection / mute and filters
+├── Output: resolution / recording format and path / start and stop recording
+├── Production: Studio Mode transitions
+└── Safety and diagnostics: output state / logs / WebSocket
 ```
 
-## 3. Function cards
+## 3. Function Cards
 
-### [Workspace isolation > Profile] Isolate output settings
+### [Workspace Isolation > Profile] Isolate Output Settings
 
-**Introduction**
-
-- **Purpose:** Keep task-specific streaming, output, audio, and video settings separate.
+- **Purpose:** Keep test streaming, output, audio, and video settings separate from existing configurations.
 - **Entry point:** `Profile` menu.
-- **Procedure:** Create or duplicate a profile → use a unique task prefix → switch to it → verify the active name → configure output only inside it.
-- **Success check:** The new profile is active and the original profile remains unchanged.
+- **Procedure:** Create or duplicate a Profile → use a unique test prefix → switch to it and verify the current name → configure output only within that Profile.
+- **Success check:** The new Profile is active, and the original Profile is unchanged.
+- **Patch:** A Profile does not store scenes or sources; those belong to a Scene Collection. After switching, recheck the service, resolution, recording path, and audio tracks.
 
-**Operational patches**
+### [Workspace Isolation > Scene Collection] Isolate Scenes and Sources
 
-- A profile does not contain scenes and sources; those belong to a Scene Collection.
-- Recheck service, output resolution, recording path, and audio tracks after switching.
-
-### [Workspace isolation > Scene Collection] Isolate scenes and sources
-
-**Introduction**
-
-- **Purpose:** Keep a task's visual layout and source objects separate from existing work.
+- **Purpose:** Avoid affecting the user's existing visual layouts.
 - **Entry point:** `Scene Collection` menu.
-- **Procedure:** Create a collection with a unique task prefix → switch to it → add task scenes and sources → inspect the mixer after switching.
-- **Success check:** The new collection is active and pre-existing scenes have not changed.
+- **Procedure:** Create a collection with a unique test prefix → switch to it → add the test scenes and sources → inspect the Audio Mixer again.
+- **Success check:** The new collection is active, and the original scenes are unchanged.
+- **Patch:** A Scene Collection does not store output settings, so use a separate test Profile as well.
 
-**Operational patches**
+### [Visual Composition > Scenes and Sources] Create a Layout
 
-- Scene Collections do not hold output settings; use a Profile as well.
-- Global audio devices can differ between collections. Recheck actual meter activity.
+- **Purpose:** Create complete layouts such as Demo and Standby screens.
+- **Entry point:** The `+` buttons in the Scenes and Sources docks.
+- **Procedure:** Create a scene → select it → add color, text, window, and other sources → adjust layer order and visibility → lock the sources when finished.
+- **Success check:** Each scene displays the expected layout in Preview, with the sources in the correct order and locked.
+- **Patch:** Sources higher in the list appear in front. “Add Existing” shares the same source object; hiding a source is not the same as deleting it.
 
-### [Composition > Scene] Create and switch scenes
+### [Visual Composition > Window Capture] Capture Only the Specified Window
 
-**Introduction**
+- **Purpose:** Avoid recording the entire desktop, notifications, or other windows.
+- **Entry point:** Sources → `Window Capture`; the label may vary by platform.
+- **Procedure:** Ask which window to use if none was specified → add Window Capture → select the exact window → verify it in Preview → crop only if necessary.
+- **Success check:** Only the specified window is visible; the desktop and unrelated windows are not.
+- **Patch:** Do not substitute Display Capture when the user requests Window Capture. If the source is black, check whether the window is minimized, whether privilege levels match, hardware acceleration, and the capture method. Do not click blindly.
 
-- **Purpose:** Organize complete layouts such as Demo and Standby.
-- **Entry point:** Scenes dock `+` button or context menu.
-- **Procedure:** Create uniquely named scenes → select one → add its sources → order scenes for easy switching.
-- **Success check:** Selecting each scene shows the expected layout in Preview.
+### [Visual Composition > Transform and Lock] Fit the Source Without Stretching
 
-**Operational patches**
+- **Purpose:** Place a source while preserving its aspect ratio.
+- **Entry point:** Transform handles in Preview, or right-click the source → Transform.
+- **Procedure:** Select the source → scale proportionally or fit it → crop if necessary → inspect the edges → lock it.
+- **Success check:** There is no obvious stretching, important content is visible, and the source cannot be dragged accidentally.
 
-- Outside Studio Mode, switching scenes can immediately change the recorded or streamed output.
+### [Audio > Mixer Inspection] Identify Active and Duplicate Capture
 
-### [Composition > Source] Add and layer sources
+- **Purpose:** Confirm which audio paths have an actual signal and prevent duplicate capture or feedback.
+- **Entry point:** Audio Mixer and Advanced Audio Properties.
+- **Procedure:** Play a known sound and watch the meters → identify active channels → compare global devices with per-scene audio sources → mute only when there is a clear reason.
+- **Success check:** Required audio has a signal, with no unnecessary duplicate channels or feedback.
+- **Patch:** Do not judge activity from a source name alone. Do not change system audio devices without permission merely to make a meter move.
 
-**Introduction**
+### [Output > Video and Recording Settings] Configure a 720p30 Local Recording
 
-- **Purpose:** Compose color, text, images, windows, cameras, media, or other scenes.
-- **Entry point:** Sources dock `+` button.
-- **Procedure:** Select the target scene → add a source type → choose new or existing → configure it → order layers → set visibility → lock finished sources.
-- **Success check:** The intended source is visible, correctly layered, and locked when layout is complete.
+- **Purpose:** Produce a predictable, recoverable test file.
+- **Entry point:** Settings → Video; Settings → Output → Recording.
+- **Procedure:** Only in the test Profile, set output to 1280×720 at 30 FPS → choose a writable path → when available, select an interruption-resilient container such as MKV → use an encoder that is actually available on the computer → apply, reopen, and verify the settings.
+- **Success check:** The resolution, frame rate, format, path, and encoder remain set to the selected values.
+- **Patch:** Do not assume that NVENC, AMF, or QSV is available. If MP4 is ultimately required, remux after recording has stopped successfully.
 
-**Operational patches**
+### [Output > Start and Stop Recording] Create and Verify a File
 
-- Sources higher in the list render in front of lower sources.
-- Reusing an existing source shares the same source object; edits may affect every scene that references it.
-- Hiding is not deleting. Some hidden sources can still consume resources.
+- **Purpose:** Record the current Program output and confirm that the file is usable.
+- **Entry point:** Controls → Start Recording / Stop Recording.
+- **Procedure:** Confirm that no output is currently running → start recording → watch the indicator and timer → perform the task → stop recording → open the recording folder and inspect the newest file.
+- **Success check:** Recording has stopped, and the new file exists with a nonzero size; review a short segment if the environment allows.
+- **Patch:** Never use Start Streaming as a substitute. Do not delete the test file on your own.
 
-### [Composition > Window Capture] Capture one application window
+### [Production > Studio Mode] Preview Before Transitioning
 
-**Introduction**
+- **Purpose:** Prepare the next visual in Preview without changing Program.
+- **Entry point:** Controls → Studio Mode.
+- **Procedure:** Enable Studio Mode and identify Preview and Program → send the initial scene to Program → prepare the next scene in Preview → set the transition → run it and check Program.
+- **Success check:** Program changes only after the transition, while Preview can be prepared independently.
+- **Patch:** A scene visible in Preview has not necessarily been output. Check Program.
 
-- **Purpose:** Capture a designated application without exposing the whole desktop.
-- **Entry point:** Sources dock → `Window Capture` (label may vary by platform).
-- **Procedure:** Ask the user which window if unspecified → add Window Capture → select the exact window → verify the preview → crop only if needed.
-- **Success check:** Only the designated window appears; desktop, notifications, and unrelated windows are absent.
+### [Safety and Diagnostics > Output State] Check Before Acting
 
-**Operational patches**
+- **Purpose:** Avoid accidentally changing a production environment that is currently streaming or recording.
+- **Entry point:** Controls, status bar, timers, and status indicators.
+- **Procedure:** Check streaming, recording, replay buffer, and virtual camera → report any active states → if an output is active, pause and ask the user what to do.
+- **Success check:** All relevant states are known, and risky work begins only in an isolated, non-live environment.
+- **Patch:** Never display stream keys or passwords in screenshots, logs, or reports.
 
-- Do not substitute Display Capture when the request is window-only.
-- Minimized, protected, GPU-accelerated, or privilege-mismatched windows may appear blank. Recheck the target and capture method rather than clicking blindly.
+### [Safety and Diagnostics > Logs and WebSocket] Diagnose with Evidence and Protect Remote Control
 
-### [Composition > Transform and lock] Fit without distortion
-
-**Introduction**
-
-- **Purpose:** Place a source on the canvas while preserving its proportions.
-- **Entry point:** Preview transform handles or source context menu → Transform.
-- **Procedure:** Select the source → fit or scale proportionally → crop if necessary → inspect edges → lock the source.
-- **Success check:** The source has no obvious stretching, important content is visible, and accidental dragging is prevented.
-
-**Operational patches**
-
-- Drag a side handle only when intentional distortion is acceptable. Cropping and scaling solve different problems.
-
-### [Audio > Mixer inspection] Check active and duplicate capture
-
-**Introduction**
-
-- **Purpose:** Confirm which audio paths have real signal and avoid duplicate capture.
-- **Entry point:** Audio Mixer dock and Advanced Audio Properties.
-- **Procedure:** Observe meters while known sound plays → identify active channels → compare global devices with per-scene audio sources → mute only with a stated reason.
-- **Success check:** Required audio has signal, unwanted duplicates are absent or muted, and no feedback loop is created.
-
-**Operational patches**
-
-- Do not infer activity from a source name; use the meter.
-- Do not change system audio devices merely to make a meter move without permission.
-
-### [Output > Canvas and output resolution] Set 720p30 safely
-
-**Introduction**
-
-- **Purpose:** Configure a predictable video size and frame rate for a test recording.
-- **Entry point:** Settings → Video.
-- **Procedure:** In the isolated Profile, inspect base canvas → set output resolution to 1280×720 → set 30 FPS → apply → recheck Preview.
-- **Success check:** Settings show 1280×720 at 30 FPS and sources still fit the canvas.
-
-**Operational patches**
-
-- Changing canvas size can alter layout. Avoid changing an existing user's Profile.
-
-### [Output > Recording format and path] Choose a recoverable local recording
-
-**Introduction**
-
-- **Purpose:** Make a local test recording resilient to interruption and easy to find.
-- **Entry point:** Settings → Output → Recording.
-- **Procedure:** Inspect available modes and encoders → select an interruption-resilient container such as MKV when available → select a writable path → use an available encoder → apply.
-- **Success check:** The chosen format, path, and encoder remain visible after reopening settings.
-
-**Operational patches**
-
-- Do not assume NVENC, AMF, QSV, or another hardware encoder exists.
-- If MP4 is required, consider recording to MKV and remuxing after a successful stop.
-
-### [Output > Start and stop recording] Produce and verify a local file
-
-**Introduction**
-
-- **Purpose:** Record the current Program output and prove that a usable file was created.
-- **Entry point:** Controls dock → Start Recording / Stop Recording.
-- **Procedure:** Confirm no output is already running → start recording → observe the recording indicator and timer → perform the scene action → stop → open the recording location → check the newest file.
-- **Success check:** Recording is stopped and the new file exists with non-zero size; play back a short segment when permitted.
-
-**Operational patches**
-
-- Never press Start Streaming as a substitute. If the state is ambiguous, stop and inspect first.
-- Do not delete the test file unless the user asks.
-
-### [Production > Studio Mode transition] Prepare before changing Program
-
-**Introduction**
-
-- **Purpose:** Prepare a scene privately in Preview before sending it to the recorded or streamed Program output.
-- **Entry point:** Controls dock → Studio Mode.
-- **Procedure:** Enable Studio Mode → identify Preview and Program → put the initial scene in Program → prepare the next scene in Preview → select transition/duration → trigger transition → verify Program.
-- **Success check:** Program changes only after the transition, while Preview can be edited independently.
-
-**Operational patches**
-
-- Do not treat a Preview-only change as published. Check the Program pane.
-
-### [Safety and diagnostics > Output-state preflight] Check before editing
-
-**Introduction**
-
-- **Purpose:** Avoid changing a live or ongoing production accidentally.
-- **Entry point:** Controls dock, status bar, and visible timers/indicators.
-- **Procedure:** Inspect streaming, recording, replay buffer, and virtual camera states → report any active output → pause for user direction before modifying a live setup.
-- **Success check:** All relevant states are known; risky work begins only in an isolated, non-live context.
-
-**Operational patches**
-
-- Never expose stream keys or passwords in screenshots, logs, or reports.
-
-### [Safety and diagnostics > Log inspection] Diagnose with evidence
-
-**Introduction**
-
-- **Purpose:** Replace guessing with version, device, encoder, and error evidence.
-- **Entry point:** Help → Log Files (exact label can vary by version).
-- **Procedure:** Reproduce once when safe → open the current log → inspect timestamps and explicit errors → redact paths, account names, tokens, and service details before sharing.
-- **Success check:** The report cites the relevant error and time without revealing sensitive data.
-
-**Operational patches**
-
-- Logs can contain machine and account information. Share the minimum necessary excerpt.
-
-### [Safety and diagnostics > WebSocket access] Control OBS remotely
-
-**Introduction**
-
-- **Purpose:** Allow an approved controller to query or change OBS state.
-- **Entry point:** Tools → WebSocket Server Settings in supported versions.
-- **Procedure:** Confirm remote control is required → bind only as broadly as necessary → enable authentication → store the password outside the map → test with a trusted client.
-- **Success check:** The approved client connects and unauthorized clients cannot.
-
-**Operational patches**
-
-- Do not disable authentication or publish the password. Treat remote output commands as high impact.
+- **Purpose:** Troubleshoot from explicit errors and safely enable approved remote control.
+- **Entry point:** Help → Log Files; Tools → WebSocket Server Settings. Exact labels vary by version.
+- **Procedure:** Reproduce the issue once when safe → inspect the error at the corresponding time → redact before sharing; enable WebSocket only when genuinely needed → limit the listening scope → enable authentication → test with a trusted client.
+- **Success check:** The report cites a specific error without sensitive information, and only approved clients can connect.
+- **Patch:** Logs may contain computer and account information. Do not disable authentication or store the password in an ASM.

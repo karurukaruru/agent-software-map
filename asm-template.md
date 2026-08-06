@@ -1,6 +1,6 @@
 # ASM: <Software Name>
 
-> One-line description of what the software does.
+> One sentence explaining what the software does.
 
 ## 0. Identity
 
@@ -9,23 +9,23 @@
 | Name | |
 | Version | |
 | Category | |
-| Platforms | |
+| Platform | |
 | Summary | |
 
 > **Scope:** State which windows, modes, or workflows this map covers.
 >
-> **Confidence:** Tested / Documentation-based, not tested / Mixed. Mark unresolved facts as `(unverified)` where they occur.
+> **Confidence:** Tested / Documentation-based, not tested / Mixed. Mark facts that cannot be confirmed as `(unverified)` where they appear.
 
 ## 1. Sources
 
-List the evidence used to build this ASM. Put user-provided material first.
+List the evidence used to create this ASM, with user-provided material first.
 
 - **User-provided:** <link, screenshot, sample file, manual, or reported behavior>
-- **Agent-retrieved · Official:** <source>
-- **Agent-retrieved · Direct test:** <test performed and observed result>
-- **Agent-retrieved · Community:** <source and why it is credible>
+- **Agent search · Official:** <source>
+- **Agent search · Direct test:** <test performed and observed result>
+- **Agent search · Community:** <source and why it is credible>
 
-## 2. Capability tree
+## 2. Capability Tree
 
 Write the hierarchy down to actionable leaves.
 
@@ -41,9 +41,9 @@ Write the hierarchy down to actionable leaves.
     └── Output
 ```
 
-## 3. Function cards
+## 3. Function Cards
 
-Create one card for every capability-tree leaf.
+Write one card for every leaf in the capability tree.
 
 ### [<Path>] <Function>
 
@@ -52,10 +52,10 @@ Create one card for every capability-tree leaf.
 - **Purpose:**
 - **Entry point:**
 - **Procedure:**
-- **Success check:**
+- **Success criteria:**
 
-**Operational patches**
+**Operational Patches**
 
-- Preconditions, state assumptions, destructive effects, version differences, common mistakes, recovery steps, or expert details.
+- Preconditions, state assumptions, destructive effects, version differences, common mistakes, recovery steps, usage details, and so on.
 
-<!-- Repeat until every leaf has a card. -->
+<!-- Repeat cards until every leaf is covered. -->

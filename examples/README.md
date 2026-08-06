@@ -1,6 +1,6 @@
 # Examples
 
-- [OBS Studio](ASM-OBS-Studio.md) — an English, documentation-based ASM for the core Windows recording workflow.
-- [OBS Studio（中文）](ASM-OBS-Studio.zh-CN.md) — Chinese translation.
+- [OBS Studio — English](ASM-OBS-Studio.md) — a documentation-based ASM for the core Windows recording workflow.
+- [OBS Studio — Chinese](ASM-OBS-Studio.zh-CN.md) — the Chinese version.
 
-Examples demonstrate the format; they are not a substitute for checking the installed version, platform, and current application state.
+Examples demonstrate the format. They do not replace checking the installed version, platform, and current application state.

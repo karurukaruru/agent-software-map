@@ -1,6 +1,6 @@
 # Agent Software Map
 
-> Give AI agents a map before they operate unfamiliar software.
+> Give agents a map before they operate unfamiliar software.
 
 [![Agent Skills](https://img.shields.io/badge/Agent%20Skills-compatible-6f42c1)](https://agentskills.io/specification)
 [![Validate](https://github.com/karurukaruru/agent-software-map/actions/workflows/validate.yml/badge.svg)](https://github.com/karurukaruru/agent-software-map/actions/workflows/validate.yml)
@@ -9,20 +9,27 @@
 
 [中文说明](README.zh-CN.md)
 
-## The problem
+## What Is an Agent Software Map?
 
-An agent may be able to click, type, and call tools without understanding the software in front of it. That often leads to blind exploration, repeated actions, incorrect state assumptions, and unsafe guesses.
+An **ASM (Agent Software Map)** is a structured Markdown file that gives an agent the software-specific operational knowledge it needs before taking action.
 
-An **Agent Software Map (ASM)** is a structured Markdown file that gives the agent software-specific operational knowledge before it acts.
+  [Target Software]
+        |
+        v
+[Confirm Software Details] -> [Gather Information] -> [Build Capability Tree] -> [Document Functions] -> [Validate] -> [Generate ASM]
+                                                                                                                    |
+                                                                                                                    v
+                                                                                                         ASM-OBS-Studio.md
+                                                                                                                    |
+                                                                                                                    v
+                                                                                                        [Operate / Test]
+                                                                                                                    |
+                                                                                                                    v
+                                                                                                       Real-World Feedback
+                                                                                                                    |
+                                                                                                                    +----> Update ASM
 
-| Without an ASM | With an ASM |
-|---|---|
-| Rediscovers menus and object relationships | Starts with a capability map |
-| Guesses whether an action succeeded | Checks observable success conditions |
-| Misses state traps and destructive effects | Receives safety boundaries and recovery notes |
-| Treats documentation as tested behavior | Tracks documented, verified, and inferred claims separately |
-
-## Quick start
+## Quick Start
 
 Install this repository as an Agent Skill:
 
@@ -40,40 +47,42 @@ Then ask:
 Use $agent-software-map to create an ASM for OBS Studio.
 ```
 
-The recognized Agent Skills entry point is the required file [`SKILL.md`](SKILL.md). Generated maps use names such as `ASM-OBS-Studio.md`.
+Generated ASMs use names such as `ASM-OBS-Studio.md`.
 
-## What an ASM contains
+## What an ASM Contains
 
-Every map has four sections:
+Every ASM has four parts:
 
 1. **Identity** — software, version, platform, scope, and confidence.
-2. **Sources** — evidence, with user-provided material first.
-3. **Capability tree** — stable objects and workflows down to actionable leaves.
-4. **Function cards** — purpose, entry point, procedure, success check, and operational patches.
+2. **Information sources** — supporting evidence, with user-provided material listed first.
+3. **Capability tree** — stable objects and workflows expanded down to actionable leaves.
+4. **Functions** — purpose, entry point, steps, success criteria, and operational patches.
 
-Operational patches capture the details most likely to decide whether an agent succeeds: state assumptions, version differences, destructive effects, naming rules, hidden dependencies, common mistakes, and recovery steps.
+Operational patches capture the details most likely to affect an agent's work: state, version differences, destructive effects, naming rules, hidden dependencies, common mistakes, and recovery methods.
 
-Start from the [English template](asm-template.md) or [Chinese template](asm-template.zh-CN.md). You can also attach an existing `ASM-<Software>.md` directly before asking an agent to operate that software.
+Start from the [English template](asm-template.md) or [Chinese template](asm-template.zh-CN.md). You can also give an agent an existing `ASM-<Software>.md` before it operates the software.
 
-## OBS example and case study
+## OBS Example and Case Study
 
 - [OBS Studio ASM](examples/ASM-OBS-Studio.md) ([中文](examples/ASM-OBS-Studio.zh-CN.md))
 - [OBS case-study protocol](evals/ASM-OBS-Test.md) ([中文](evals/ASM-OBS-Test.zh-CN.md))
 
-The OBS map is currently a documentation-based candidate for OBS Studio 32.2.1 and has not completed live validation on the target machine.
+The OBS map is currently a documentation-based candidate for OBS Studio 32.2.1 and has not yet been tested on the target computer.
 
-Two attempted comparison runs were interrupted before completion: one by provider quota exhaustion and one by an API failure. The author manually counted 41 points at interruption in one run and roughly 40–50 in the other, but neither value is a final score. They are excluded from results and must not be used to claim an improvement.
+August 6, 2026
 
-## Evaluation rules
+Neither comparison attempt was completed. One stopped when the provider quota ran out, and the other stopped because of an API error. The author manually counted 41 points at interruption in one attempt and approximately 40–50 points in the other. Neither is a final score. Both must be excluded from the results and must not be used to claim an improvement.
 
-- Keep model, task, machine, initial state, time limit, tools, and permission mode constant.
-- Use fresh sessions for baseline and ASM-assisted conditions.
-- Discard runs interrupted by quota, API, network, or machine failure.
-- Score only observable completed requirements.
-- With one valid run per condition, call the result a **case study**, not a benchmark.
-- Publish ties, regressions, and incomplete results honestly.
+## Evaluation Rules
 
-## Repository layout
+- Keep the model, task, computer, initial state, time limit, tools, and permission mode the same.
+- Use fresh sessions for the baseline and ASM-assisted conditions.
+- Discard runs interrupted by quota, API, network, or computer failure.
+- Score only directly observable completed items.
+- With only one valid run per condition, describe the result as a **case study**, not a benchmark.
+- Report ties, regressions, and incomplete results honestly.
+
+## Repository Layout
 
 ```text
 .
@@ -92,14 +101,14 @@ Two attempted comparison runs were interrupted before completion: one by provide
 └── LICENSE
 ```
 
-## Project status
+## Project Status
 
-`v0.0.0` is an experimental preview. It includes the format, generator skill, bilingual templates, one documentation-based OBS example, and a controlled evaluation protocol. The format may change, and a valid completed OBS comparison is still pending.
+`v0.0.0` is an experimental preview that includes the format, generator Skill, English and Chinese templates, a documentation-based OBS example, and a controlled evaluation protocol. The format may still change, and a valid completed OBS comparison is still pending.
 
-## Contributing and security
+## Contributing and Security
 
-Corrections from real software use are especially valuable. See [CONTRIBUTING.md](CONTRIBUTING.md). Report sensitive problems according to [SECURITY.md](SECURITY.md), not in a public issue.
+Corrections based on real-world use are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md). Report sensitive security issues according to [SECURITY.md](SECURITY.md), not in a public issue.
 
 ## License
 
-Agent Software Map is released under the [MIT License](LICENSE). OBS Studio is a separate project licensed under GPL-2.0-or-later; this repository does not contain OBS source code.
+Agent Software Map is available under the [MIT License](LICENSE). OBS Studio is a separate project licensed under GPL-2.0-or-later; this repository does not contain OBS source code.

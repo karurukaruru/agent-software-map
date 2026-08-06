@@ -5,11 +5,13 @@ description: Create or update an Agent Software Map (ASM) that helps AI agents o
 
 # Agent Software Map
 
-Create a compact, evidence-aware operational map for an AI agent. Optimize for successful action, state awareness, and safe recovery—not for feature-list completeness.
+## Goal
 
-## Use the standard structure
+Create a concise software map that identifies evidence levels and can directly guide an agent's actions. Focus on successful execution, state awareness, and safe recovery rather than simply listing every feature.
 
-Start from [asm-template.md](asm-template.md). Produce these sections in order:
+## Standard Structure
+
+Start from [asm-template.md](asm-template.md) and produce these sections in order:
 
 1. Identity
 2. Sources and confidence
@@ -18,89 +20,67 @@ Start from [asm-template.md](asm-template.md). Produce these sections in order:
 
 Name the result `ASM-<Software-Name>.md`.
 
-## 1. Establish scope
+## 1. Define the Scope
 
-Record the software name, version or version range, platform, interface language when relevant, and intended workflows. State what is excluded.
+Record the software name, version or version range, platform, interface language when relevant, target workflows, and exclusions. Use information the user has already provided first. Ask a question only when a missing choice would materially change the result or create a safety risk.
 
-Use information already supplied by the user before asking questions. Ask only when a missing choice changes the map materially or creates safety risk.
+## 2. Gather Information
 
-## 2. Gather evidence
+Use this priority order:
 
-Prefer evidence in this order:
+1. Files, links, screenshots, recordings, and constraints provided by the user
+2. Official documentation, source repositories, release notes, and help text
+3. Direct observation or controlled testing
+4. Reliable community sources used only to fill gaps
 
-1. User-provided files, links, screenshots, recordings, and constraints
-2. Official product documentation, source repositories, release notes, and help text
-3. Direct observation or a controlled test
-4. Reputable community material for gaps only
+State what each source supports and distinguish among:
 
-Label each source and what it supports. Distinguish:
+- `Verified`: directly observed on the specified version and platform
+- `Documented`: supported by official material but not tested locally
+- `Inferred`: reasonably deduced but still awaiting confirmation
 
-- `Verified`: directly observed in the named version and platform
-- `Documented`: supported by an official source but not tested locally
-- `Inferred`: a reasoned conclusion that still needs confirmation
+Do not describe documented behavior as tested behavior. Do not invent menu names, keyboard shortcuts, default values, paths, or success states.
 
-Never convert a documented claim into a tested claim. Do not invent menu names, shortcuts, defaults, paths, or success states.
+## 3. Build the Capability Tree
 
-## 3. Build the capability tree
+Organize capabilities around the software rather than mechanically copying every interface control. Common top-level branches include setup and identity, content or object management, input and output, runtime state, diagnostics and recovery, automation and integrations, and safety and permissions.
 
-Organize capabilities by the user's mental model and the software's stable objects, not by every visible control.
+Stop expanding when a leaf can be expressed in one function card with one clear success condition. Merge duplicate paths that reach the same underlying operation.
 
-Good top-level branches usually include:
+## 4. Write Function Cards
 
-- setup and identity
-- content or object management
-- input and output
-- execution or runtime state
-- diagnostics and recovery
-- automation and integration
-- safety and permissions
+Cover high-value leaves first. Every card must include:
 
-Stop expanding a branch when a leaf can be represented by one function card with one clear success condition. Merge duplicate paths that reach the same underlying operation.
-
-## 4. Write function cards
-
-Create cards for high-value leaves first. Every card must contain:
-
-- **Purpose**: the user outcome
-- **Entry**: the menu, command, screen, API, or prerequisite state
-- **Procedure**: short ordered actions with decision points
+- **Purpose**: the outcome the user wants
+- **Entry point**: the menu, command, page, API, or prerequisite state
+- **Procedure**: short ordered steps and necessary branches
 - **Success check**: visible or machine-readable evidence of completion
-- **Patches**: common mistakes, state traps, platform differences, recovery, and safety boundaries
+- **Patches**: common mistakes, state traps, platform differences, recovery methods, and safety boundaries
 
-Use interface labels exactly when known. Include alternatives only when they materially improve success.
+For stateful or destructive operations, also state the prerequisites, affected data, whether confirmation is required, and how to stop, undo, or recover.
 
-For stateful or destructive actions, also state:
+## 5. Make the Map Agent-Friendly
 
-- preconditions
-- affected data or output
-- whether confirmation is required
-- how to stop, undo, or recover
+Use imperative language and observable conditions. Avoid vague directions such as “configure it correctly”; provide specific fields, choices, and checks.
 
-## 5. Make the map agent-usable
-
-Write imperative, observable instructions. Replace vague phrases such as “configure correctly” with concrete fields, choices, and checks.
-
-Teach distinctions that commonly cause failure—for example profile versus project, preview versus live output, save versus publish, or hidden versus deleted.
-
-Prefer the smallest safe action. Require a pause before irreversible actions, public publishing, credential exposure, billing, deletion, or modification of existing user data.
+Explain concepts that are easy to confuse, such as profile versus project, preview versus live output, save versus publish, and hide versus delete. Pause for confirmation before irreversible actions, public publishing, credential exposure, payment, deletion, or changes to existing user data.
 
 ## 6. Validate
 
-Before delivery, confirm:
+Before delivery, confirm that:
 
-- all four required sections exist
-- identity and scope are explicit
-- every important claim has a source or confidence label
-- capability leaves map to function cards
+- all four required sections are present
+- identity and scope are clear
+- important claims have a source or confidence label
+- capability-tree leaves map to function cards
 - every card has a success check
-- untested procedures are marked as unverified
-- risky actions have boundaries and recovery guidance
-- terminology is consistent throughout
-- relative links resolve
-- the map does not contain secrets or private information
+- untested procedures are labeled
+- high-risk operations include boundaries and recovery guidance
+- terminology is consistent and relative links work
+- the map contains no private information
 
-If direct testing is unavailable, deliver a documentation-based candidate and say exactly what remains to be verified.
+If direct testing is unavailable, deliver a documentation-based candidate and clearly list what still needs to be verified.
 
-## 7. Update incrementally
+## 7. Update Incrementally
 
-When feedback arrives, patch the affected identity field, branch, card, or platform note. Preserve validated content unless new evidence contradicts it. Record version-specific changes instead of silently rewriting them as universal behavior.
+When feedback arrives, change only the affected identity field, branch, card, or platform note. Preserve verified content unless new evidence contradicts it. Record version differences explicitly instead of rewriting them as universal behavior.
