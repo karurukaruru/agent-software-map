@@ -12,9 +12,7 @@
 ## What Is an Agent Software Map?
 An ASM (Agent Software Map) is a structured Markdown file that provides an agent with operational knowledge about a specific software application before the agent begins interacting with it.
 
-
-Install this repository as an Agent Skill:
-```bash
+```text
 [Target Software]
         |
         v
@@ -31,7 +29,11 @@ Install this repository as an Agent Skill:
                                                                                                            |
                                                                                                            +----> Update ASM
 ```
-Quickly to star
+
+## Quick Start
+
+Install this repository as an Agent Skill:
+
 ```bash
 # Claude Code
 git clone https://github.com/karurukaruru/agent-software-map.git ~/.claude/skills/agent-software-map
@@ -48,7 +50,7 @@ Use $agent-software-map to create an ASM for OBS Studio.
 
 The recognized Agent Skills entry point is the required file [`SKILL.md`](SKILL.md). Generated maps use names such as `ASM-OBS-Studio.md`.
 
-##What Does an ASM Contain?
+## What Does an ASM Contain?
 
 Each ASM contains four main sections:
 
@@ -71,15 +73,13 @@ Start from the [English template](asm-template.md) or [Chinese template](asm-tem
 
 The OBS map is currently a documentation-based candidate for OBS Studio 32.2.1 and has not completed live validation on the target machine.
 
-Two attempted comparison runs were interrupted before completion: one by provider quota exhaustion and one by an API failure. The author manually counted 41 points at interruption in one run and roughly 40–50 in the other, but neither value is a final score. They are excluded from results and must not be used to claim an improvement.
-
-##August 6, 2026 Test Attempt
+## August 6, 2026 Test Attempt
 
 Neither of the two controlled comparison runs was completed. One run was interrupted because the service provider's quota was exhausted, and the other was interrupted by an API error.
 
 At the time of interruption, the author manually estimated one run at 41 points and the other at approximately 40–50 points. These are not final scores. They must be excluded from the results and must not be used to claim that the ASM improved performance.
 
-Evaluation Rules
+## Evaluation Rules
 
 Keep the model, task, computer, initial state, time limit, tools, and permission mode identical across conditions.
 
@@ -93,7 +93,8 @@ When only one valid run exists for each condition, describe the result as a case
 
 Publish ties, regressions, and incomplete results honestly.
 
-Project Structure
+## Project Structure
+
 ```text
 .
 ├── SKILL.md                   # Required Agent Skills entry point
