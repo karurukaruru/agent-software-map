@@ -11,8 +11,6 @@
 
 ## 什么是Agent software map
 
-Agent即使会点击、输入和调用工具，也不一定理解眼前的软件。结果往往是盲目探索、重复操作、错误判断状态，甚至做出不安全的猜测。
-
 **ASM（Agent Software Map）**是一份结构化 Markdown 文件，在Agent操作前提供特定软件的操作知识。
 
 | 没有 ASM | 有 ASM |
@@ -40,7 +38,7 @@ git clone https://github.com/karurukaruru/agent-software-map.git ~/.codex/skills
 使用 $agent-software-map 为 OBS Studio 创建一份 ASM。
 ```
 
-生成出的软件地图则采用 `ASM-OBS-Studio.md` 这样的名称。
+生成出的ASM则采用 `ASM-OBS-Studio.md` 这样的名称。
 
 ## ASM 包含什么
 
@@ -51,7 +49,7 @@ git clone https://github.com/karurukaruru/agent-software-map.git ~/.codex/skills
 3. **能力树**——从稳定对象和工作流展开到可执行叶节点。
 4. **功能**——作用、入口、步骤、成功检查和操作补丁。
 
-操作补丁记录最可能影响代理成败的细节：状态假设、版本差异、破坏性影响、命名规则、隐藏依赖、常见错误和恢复方法。
+操作补丁记录最可能影响Agent操作的细节：状态、版本差异、破坏性影响、命名规则、隐藏依赖、常见错误和恢复方法。
 
 可以从[英文模板](asm-template.md)或[中文模板](asm-template.zh-CN.md)开始，也可以在操作软件前直接把已有的 `ASM-<软件>.md` 提供给Agent。
 
