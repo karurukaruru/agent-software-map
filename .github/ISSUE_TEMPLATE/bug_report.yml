@@ -1,47 +1,38 @@
-name: Bug report
-description: Report an error in the Skill, template, example, or validation tooling
-title: "[Bug]: "
-labels:
-  - bug
+name: ASM 错误报告
+description: 报告会导致 Agent 误判、失败或产生风险的 ASM 内容
+title: "[错误] "
+labels: ["bug"]
 body:
-  - type: markdown
+  - type: input
+    id: software
     attributes:
-      value: Thanks for helping improve Agent Software Map. Do not include credentials or private data.
-  - type: dropdown
-    id: area
-    attributes:
-      label: Area
-      options:
-        - Generator Skill
-        - ASM format or template
-        - OBS example
-        - Evaluation protocol
-        - Validation tooling
-        - Documentation
+      label: 软件与版本
+      placeholder: 例如 Adobe After Effects 25.x
     validations:
       required: true
   - type: input
-    id: version
+    id: environment
     attributes:
-      label: Software and version
-      placeholder: "Example: OBS Studio 32.2.1 on Windows 11"
+      label: 平台与环境
+      placeholder: 操作系统、界面语言、插件或控制通道
+    validations:
+      required: true
   - type: textarea
-    id: problem
+    id: location
     attributes:
-      label: What is wrong?
-      description: Include the exact file, section, or function card.
+      label: 受影响位置
+      description: 指明 ASM 文件、章节、对象、状态或操作契约。
     validations:
       required: true
   - type: textarea
     id: evidence
     attributes:
-      label: Evidence
-      description: Link official documentation or describe a direct test without exposing private information.
+      label: 观察结果与证据
+      description: 说明预期、实际结果、证据等级和复现条件。请先移除敏感信息。
     validations:
       required: true
   - type: textarea
-    id: expected
+    id: recovery
     attributes:
-      label: Expected correction
-    validations:
-      required: true
+      label: 已知恢复方式
+      description: 如果操作失败或部分完成，请说明如何恢复到可控状态。
