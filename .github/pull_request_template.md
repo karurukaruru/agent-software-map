@@ -1,17 +1,17 @@
-## Summary
+## 变更内容
 
-Describe the problem and the change.
+<!-- 说明修改了什么，以及为什么它会改善 Agent 的执行结果。 -->
 
-## Evidence
+## 适用范围与证据
 
-- Software/version/platform, if applicable:
-- Official source or direct observation:
-- Confidence: verified / documented / inferred
+- 软件版本 / 平台 / 环境：
+- 证据等级：已验证 / 有文档依据 / 推断 / 未知
+- 证据来源：
 
-## Validation
+## 验证
 
-- [ ] I ran `python scripts/validate.py`.
-- [ ] Important function cards include observable success checks.
-- [ ] Documentation-only claims are not described as live-tested.
-- [ ] No credentials, private paths, recordings, or personal information are included.
-- [ ] English and Chinese files are synchronized when both are affected.
+- [ ] 已运行 `python scripts/validate.py`
+- [ ] 没有把文档依据描述为实测
+- [ ] 高价值动作包含真实结果验证与失败恢复
+- [ ] 已检查敏感信息、私有路径和不可逆操作
+- [ ] 如有不兼容变化，已更新迁移说明和更新日志

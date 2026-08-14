@@ -1,5 +1,5 @@
 blank_issues_enabled: true
 contact_links:
-  - name: Sensitive security report
+  - name: 安全问题
     url: https://github.com/karurukaruru/agent-software-map/security
-    about: Do not publish credentials, private data, or exploit details in a public issue.
+    about: 请私密报告凭证泄露或其他安全问题，不要创建公开 Issue。

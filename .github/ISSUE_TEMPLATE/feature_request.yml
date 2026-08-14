@@ -1,23 +1,25 @@
-name: Feature request
-description: Propose an improvement or a new software map
-title: "[Feature]: "
-labels:
-  - enhancement
+name: ASM 改进建议
+description: 建议新增能减少探索、误判、失败或风险的知识
+title: "[建议] "
+labels: ["enhancement"]
 body:
   - type: textarea
-    id: problem
+    id: gap
     attributes:
-      label: Problem or use case
-      description: What agent failure or missing workflow would this address?
+      label: 当前知识缺口
+      description: 如果不补充这项内容，Agent 很可能会猜错、选错工具、误报成功或产生什么风险？
     validations:
       required: true
   - type: textarea
-    id: proposal
+    id: scope
     attributes:
-      label: Proposed change
+      label: 适用版本与环境
     validations:
       required: true
   - type: textarea
     id: evidence
     attributes:
-      label: Relevant sources or examples
+      label: 可用证据与验证方法
+      description: 区分已验证、文档依据、推断和未知。
+    validations:
+      required: true

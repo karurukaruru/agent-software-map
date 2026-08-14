@@ -6,21 +6,18 @@ This project follows [Semantic Versioning](https://semver.org/). Dates use `YYYY
 
 ## [Unreleased]
 
-- Live validation of the OBS Studio map
-- A completed controlled baseline/ASM-assisted case study
+- Additional reference maps and live validation results.
 
-## [0.0.0] - 2026-08-06
+## [1.0.0] - 2026-08-14
 
 ### Added
 
-- Agent Software Map format and generator Skill
-- English and Chinese templates
-- Documentation-based OBS Studio 32.2.1 example
-- Bilingual controlled case-study protocol
-- Repository validation script and GitHub Actions workflow
-
-### Changed
-
-- Renamed the project and format to Agent Software Map (ASM)
-
-> This is an experimental preview. The format and files may change before `v0.1.0`.
+- The Agent Software Map design and generator Skill.
+- Object relationships, stable addressing, and decision-relevant state modeling.
+- Separate observation and control methods with task-specific selection rules.
+- Operational contracts, real-result verification, partial-completion handling, and failure recovery.
+- Retry safety, idempotency, side effects, safety boundaries, environment differences, and explicit unknowns.
+- Incremental learning and update guidance based on real operation.
+- Bilingual README and optional ASM templates.
+- Adobe After Effects reference ASM.
+- Repository validation and GitHub contribution templates.
