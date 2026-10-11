@@ -6,6 +6,8 @@ This project follows [Semantic Versioning](https://semver.org/). Dates use `YYYY
 
 ## [Unreleased]
 
+## [1.1.0] - 2026-10-11
+
 ### Added
 
 - Fourteen focused After Effects / PV workflow cards and a task index.
@@ -15,6 +17,11 @@ This project follows [Semantic Versioning](https://semver.org/). Dates use `YYYY
 
 - Generalized examples and clarified evidence, runtime probe, and visual verification boundaries.
 - Corrected text fill handling, root-composition identification, audio-state checks, and frame-rate conversion guidance.
+
+### Validation
+
+- Repository validation, relative Markdown links, whitespace checks, and GitHub Actions validation passed.
+- This release has not been tested inside After Effects and does not claim measured agent-performance gains.
 
 ## [1.0.0] - 2026-08-14
 

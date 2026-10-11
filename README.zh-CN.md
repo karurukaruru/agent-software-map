@@ -5,7 +5,7 @@
 [![Agent Skills](https://img.shields.io/badge/Agent%20Skills-compatible-6f42c1)](https://agentskills.io/specification)
 [![Validate](https://github.com/karurukaruru/agent-software-map/actions/workflows/validate.yml/badge.svg)](https://github.com/karurukaruru/agent-software-map/actions/workflows/validate.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Status](https://img.shields.io/badge/status-v1.0.0-blue)](#项目状态)
+[![Status](https://img.shields.io/badge/status-v1.1.0-blue)](#项目状态)
 
 [English](README.md)
 
@@ -147,7 +147,7 @@ After Effects 地图新增 [14 张按需 PV 工作流卡片](references/workflow
 
 ## 项目状态
 
-`v1.0.0` 是当前 ASM 设计的首次公开发布。格式已经可以使用，但每一份软件地图仍需要与目标软件版本和环境相符的证据。文件符合结构，不代表其中内容已经得到真实验证。
+`v1.1.0` 在 ASM 1.0.0 设计上增加十四张面向任务的 After Effects / PV 工作流卡片，核心 ASM 格式与 1.0.0 保持兼容。格式已经可以使用，但每一份软件地图仍需要与目标软件版本和环境相符的证据。文件符合结构，不代表其中内容已经得到真实验证。
 
 ## 贡献与安全
 

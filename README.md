@@ -5,7 +5,7 @@
 [![Agent Skills](https://img.shields.io/badge/Agent%20Skills-compatible-6f42c1)](https://agentskills.io/specification)
 [![Validate](https://github.com/karurukaruru/agent-software-map/actions/workflows/validate.yml/badge.svg)](https://github.com/karurukaruru/agent-software-map/actions/workflows/validate.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Status](https://img.shields.io/badge/status-v1.0.0-blue)](#project-status)
+[![Status](https://img.shields.io/badge/status-v1.1.0-blue)](#project-status)
 
 [中文说明](README.zh-CN.md)
 
@@ -147,7 +147,7 @@ The After Effects map now includes [14 focused PV workflow cards](references/wor
 
 ## Project status
 
-`v1.0.0` is the first public release of the current ASM design. The format is usable, but individual maps still need evidence appropriate to their target software version and environment. A map is not validated merely because it follows the structure.
+`v1.1.0` extends the ASM 1.0.0 design with fourteen task-specific After Effects / PV workflow cards. The core ASM format remains compatible with 1.0.0. The format is usable, but individual maps still need evidence appropriate to their target software version and environment. A map is not validated merely because it follows the structure.
 
 ## Contributing and security
 
