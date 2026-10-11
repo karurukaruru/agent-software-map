@@ -113,7 +113,8 @@ ASM-<Software-Name>.md
 ├── SKILL.md / SKILL.zh-CN.md
 ├── asm-template.md / asm-template.zh-CN.md
 ├── references/
-│   └── ASM-After-Effects.md
+│   ├── ASM-After-Effects.md
+│   └── workflows/ (14 task-specific cards + index)
 ├── scripts/validate.py
 ├── agents/openai.yaml
 ├── .github/
@@ -141,6 +142,8 @@ ASM-<Software-Name>.md
 - commit 或创建 release tag 前，在仓库根目录运行 `python scripts/validate.py`。
 
 实验结果应同时说明 Task、Model、Environment、Initial State、Permission、有效性规则和可观察结果。在这些信息完整公开前，本仓库不根据未完成或缺少上下文的结果宣称性能提升。
+
+After Effects 地图新增 [14 张按需 PV 工作流卡片](references/workflows/README.md)，覆盖文字、插画、相机、图形、合成与交付。配方与示例参数仍需目标环境验证；本次更新没有执行 AE 实机测试。
 
 ## 项目状态
 

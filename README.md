@@ -113,7 +113,8 @@ The complete design rules are in [SKILL.md](SKILL.md). The original Chinese desi
 ├── SKILL.md / SKILL.zh-CN.md
 ├── asm-template.md / asm-template.zh-CN.md
 ├── references/
-│   └── ASM-After-Effects.md
+│   ├── ASM-After-Effects.md
+│   └── workflows/ (14 task-specific cards + index)
 ├── scripts/validate.py
 ├── agents/openai.yaml
 ├── .github/
@@ -141,6 +142,8 @@ Before publishing or installing the repository as a Skill, check the current [Ag
 - Run `python scripts/validate.py` from the repository root before committing or tagging a release.
 
 Evaluation results should include their task, model, environment, initial state, permissions, validity rules, and observable outcomes. This repository does not make a performance claim until those results are published with enough context to interpret them.
+
+The After Effects map now includes [14 focused PV workflow cards](references/workflows/README.md). They cover typography, illustration rigs, cameras, shapes, compositing, and delivery. Recipes and parameter examples require validation in the target environment; this update does not include an AE runtime test.
 
 ## Project status
 

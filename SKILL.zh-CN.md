@@ -5,6 +5,8 @@ description: 定义如何创建、验证、使用和更新 Agent Software Map（
 
 # Agent Software Map Skill（中文设计母版）
 
+AE / 音乐视觉任务按需读取 [AE 地图](references/ASM-After-Effects.md) 与 [工作流索引](references/workflows/README.md)。新增卡片是候选配方，不能视为实机认证。
+
 > 本文件定义如何创建、验证和更新 Agent Software Map（ASM）。
 >
 > ASM 不是面向人的软件教程，不是软件百科，也不是把官方文档重新整理一遍。

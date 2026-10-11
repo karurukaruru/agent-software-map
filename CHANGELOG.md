@@ -6,7 +6,15 @@ This project follows [Semantic Versioning](https://semver.org/). Dates use `YYYY
 
 ## [Unreleased]
 
-- Additional reference maps and live validation results.
+### Added
+
+- Fourteen focused After Effects / PV workflow cards and a task index.
+- Candidate recipes for typography, illustration rigs, camera motion, compositing, shapes, modular scenes, and delivery.
+
+### Changed
+
+- Generalized examples and clarified evidence, runtime probe, and visual verification boundaries.
+- Corrected text fill handling, root-composition identification, audio-state checks, and frame-rate conversion guidance.
 
 ## [1.0.0] - 2026-08-14
 

@@ -1,12 +1,12 @@
 # Agent Software Map — Adobe After Effects
 
-> 文档状态：第一版可评审草案（静态证据充分，目标 AE 实机验证尚未完成）
+> 文档状态：公开参考草案（包含按需工作流；本仓库未提供可复现的 AE 实机验证记录）
 >
 > 生成日期：2026-08-14
 >
 > 默认平台：Windows / macOS
 >
-> 正式版基线：After Effects 26.3（June 2026）；实际执行必须以目标机器 `app.version`、build 和能力探针为准
+> 历史研究基线：After Effects 26.3（June 2026），不代表当前最新版；实际执行必须以目标机器 `app.version`、build 和能力探针为准
 > 主要自动化层：ExtendScript / JSX；候选适配器：`a-y-ibrahim/after-effects-mcp` 1.11.1，commit `5f9f6fb42698f8d3f83a2b7fbec926d0cc416e64`
 
 ## 0. 如何使用本 ASM
@@ -29,6 +29,10 @@
 - `[E]`：对本地资料和固定源码的静态审计结论；需运行时复核。
 - `[已验证]`：只用于目标 AE/目标 MCP 上已经实际读取或执行并回读确认的行为。本版尚无此等级的 live-AE 结论。
 
+- `[推断]`：可复用候选规则，需目标环境探针；不等于实机验证。
+- `[设计候选]`：可由 brief 覆盖的工作流或审美选择。
+- `[待验证]`：行为、参数或兼容性尚未确认。
+
 ### 执行时的最小加载顺序
 
 1. 第 1、2、4 节：身份、对象、当前状态；
@@ -38,6 +42,8 @@
 5. 第 11、12 节：失败恢复与安全边界。
 
 ---
+
+PV / 音乐视觉任务按需读取 [工作流索引](workflows/README.md)，只加载当前任务涉及的卡片。卡片按通用制作职责组织。
 
 ## 1. 身份、范围与边界
 
@@ -725,6 +731,34 @@ UNKNOWN 时不得直接重试非幂等动作。
 
 ---
 
+### 9.12 第三方预设与脚本适配器
+
+**状态**：`[待验证]`；本仓库不提供第三方脚本的内部 API 捕获、闭包改写或专有表达式副本。
+
+1. 核对已安装版本、许可、公开接口和目标层；没有公开接口时选择 GUI 或内置 Text Animator。
+2. 保存目标层、选中状态、效果/动画器树和关键帧；先在副本上应用一次。
+3. 枚举真实生成的效果、动画器、控制层和表达式错误；不要把 UI 名称当稳定 API。
+4. 回读结构并检查入场、阅读、退场代表帧；结构正确只支持结构验收。
+5. 超时后先检查实际实例数量和状态；恢复 before 状态或只补缺失部分。
+6. 切换项目、重载脚本或重启 AE 后重新探测接口；不得假设全局对象仍有效。
+
+### 9.13 脚本属性与视觉验收探针
+
+**状态**：`[待验证]`。以下是目标环境检查项，不是 AE 26.x 通用认证：
+
+- 从 `ADBE Transform Group` 重新取得 Position/Scale/Rotation/Anchor，检查返回值与维度；结构修改后不要沿用旧引用。
+- 插值与 blend 使用目标宿主的命名枚举；不要把某次回读的整数常量写成跨版本合同。
+- `setTemporalEaseAtKey` 的数组规格按实际 property value type 确认；空间 Position 与非空间多维属性不能只按坐标数量类推。
+- `TextDocument` 的填充开关与 RGB 颜色分开处理。候选脚本使用 `applyFill=false`、`applyStroke=true`，设置有效 strokeColor/strokeWidth 后将文档写回；先在独立文字层探测。禁止以 `fillColor=null` 代替无填充设置。
+- 字体应回读实际解析的字体标识；文本 bounds 与 Anchor 在修改字体/字号/文本后重新计算。
+- `expressionEnabled` 不足以证明健康；同时检查 `expressionError` 与若干时点的求值。
+- 改 `startTime`、parent、matte 或分离维度后，回读 in/out、keys 和世界坐标，确认时间/空间关系没有意外变化。
+- 宿主对象的方法保持其对象上下文；接口失败先查引用、类型和版本，不推断某个函数名被 AE 全局保留。
+- 可反射到的方法不等于可调用。帧导出失败时，先探测独立单帧 Render Queue；保存并恢复既有 queue 状态，核对实际产物文件。
+- 静态回读不能证明像素正确；缺字体、媒体、插件或渲染通道时，视觉结果保持 `unverified`。
+
+---
+
 ## 10. 高价值工作流
 
 ### 10.1 通用可靠 mutation
@@ -789,6 +823,15 @@ Bridge/AE health
 -> 部分完成：最小恢复；必要时从 checkpoint
 -> 仍 UNKNOWN：请求人工判断或恢复备份
 ```
+
+---
+
+### 10.5 PV 制作与参考工程分析
+
+- 使用 [工作流索引](workflows/README.md) 选择前期、文字、插画、相机、图形、合成或后期卡片。
+- 分析参考工程时，将 DOM 结构、视觉观察和源参数恢复分开；烘焙图像/视频不能提供原始字体、key 或插件参数。
+- 只读捕获资料可能包含私有文本和路径；默认保留在该任务环境，公开地图只记录抽象方法。
+- 以原始工程的实际状态为依据；所有重建另存，结构与多时点视觉对照共同验收。
 
 ---
 
@@ -859,7 +902,7 @@ Bridge/AE health
 
 ## 13. 版本与环境差异
 
-- 当前正式版资料基线：AE 26.3；目标机器仍需记录完整 build。[A]
+- 历史资料基线：AE 26.3；目标机器仍需记录完整 build。[A]
 - AE 22.0+ 有 persistent `Layer.id` / `Project.layerByID`；使用前 feature detection。[C]
 - AE 26.0 增加 variable font axis、`Property.propertyParameters`、`Property.valueText` 等 hook；旧版本不可假设存在。[A/C]
 - AE 26.3 增加 Parametric Mesh scripting 对象和 Advanced 3D camera properties；需要时 feature detection。[A/C]
@@ -931,22 +974,21 @@ Bridge/AE health
 - [Adobe After Effects：Expression language reference](https://helpx.adobe.com/after-effects/using/expression-language-reference.html)：expression 对象与语义。[A]
 - [候选 After Effects MCP 实现](https://github.com/a-y-ibrahim/after-effects-mcp)：第三方适配器公开仓库；本 ASM 中的适配器结论限定到文件头记录的固定 commit，不代表其所有未来版本。[D]
 
-### 用户提供与本地研究材料
+### 验证边界
 
-本 ASM 还依据用户提供的中文 AE / PV / MAD 教程、自动化研究笔记和对候选适配器固定源码的审计结果生成。这些材料未全部随仓库公开，因此只能作为 `[T]` 或已明确限定范围的 `[D]` 证据，不能让公开读者误认为它们是仓库内可直接访问的文件。
+新增工作流中的运行时行为与数值保持候选状态；结构检查、视觉检查和真实输出分别验收。执行前核对目标软件版本、实际工具 schema 和受控探针；固定适配器 commit 是历史研究对象，不是当前版本承诺。
 
-公开执行时优先核对 Adobe 当前 Help、Developer 文档和 release notes；第三方适配器行为以实际安装版本的源码、`tools/list` 与受控验证为准。
+补充官方说明：
 
----
+- [Character panel：填充与描边](https://helpx.adobe.com/after-effects/desktop/add-text/formatting-characters-and-paragraphs/formatting-characters-character-panel.html)。
+- [Keyframe interpolation：时间与空间插值](https://helpx.adobe.com/after-effects/desktop/animate-in-after-effects/animation-keyframes/keyframe-interpolation.html)。
+- [Keying：素材键控与透明度检查](https://helpx.adobe.com/after-effects/desktop/animate-in-after-effects/keying/keying.html)。
 
-## 17. 增量更新记录
+## 17. 公开增量记录
 
-### 2026-08-14 — v1.0.0 initial public draft
+### 2026-10-11 — 工作流整理与发布审查
 
-- 基于工作区 AE 教程、自动化证据包和候选 MCP 固定源码生成。
-- 静态确认候选源码注册 51 tools，而人类文档声称 48。
-- 明确候选 MCP 是 ScriptUI 文件桥，不是 CEP。
-- 明确名称/index selector 缺口、command ID、UNKNOWN、非幂等重试与外部产物验证。
-- 明确 `run-script` 的 read-only 文档与 allowlist 冲突。
-- 明确固定 Bridge 源码把 `executeScript` 与 render/visual 命令排除在自动 undo group 外。
-- 当前没有 live-AE 验证记录；所有后续实测应局部更新对应规则、版本和证据等级。
+- 新增 14 张可按需加载的 PV/AE 工作流卡片及索引。
+- 按制作职责组织通用方法与示例；保留按需加载结构。
+- 所有新增运行时行为保持待验证；没有执行 AE 或 MCP 实机测试。
+- 补充文字填充、空间缓动、表达式、引用图、音频和视觉验收的边界。

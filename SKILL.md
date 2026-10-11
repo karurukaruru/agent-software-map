@@ -20,6 +20,8 @@ Its purpose is to reduce:
 
 An ASM serves a capable reasoning agent. Record information the agent is likely to lack and that materially changes task success, verification, or safety.
 
+For After Effects / music-video tasks, load [the AE map](references/ASM-After-Effects.md) and select only the relevant cards from [the workflow index](references/workflows/README.md). These cards are candidate recipes, not runtime certification.
+
 The complete Chinese design master is available in [SKILL.zh-CN.md](SKILL.zh-CN.md).
 
 ---
